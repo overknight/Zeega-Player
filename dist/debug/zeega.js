@@ -40477,7 +40477,9 @@ function( Zeega ) {
             // TODO: Investigate value of "sequence"
             if ( this.get("current_sequence") != sequence ) {
                 seqHist = this.get("sequenceHistory");
-                seqHist.push( sequence );
+                if(seqHist.length===0||seqHist[seqHist.length-1]!=sequence) {
+                    seqHist.push( sequence );
+                }
                 this.set({
                     current_sequence: sequence,
                     current_sequence_model: this.get("project").get("sequences").get( sequence ),
